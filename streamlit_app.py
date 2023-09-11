@@ -69,8 +69,11 @@ if streamlit.button("Get Fruit Load List add your fav"):
     streamlit.write("--- adding " + add_my_fruit)
     if not add_my_fruit:
       streamlit.error("select a fruit to add")
+      streamlit.write("sleeping ")
+      time.sleep(3)
     else:
       streamlit.write("################ ready for snowflake insert ####################")
+      streamlist.write("sleeping")
       insert_row_snowflake(add_my_fruit)
   except URLError as e:
     streamlit.error()
