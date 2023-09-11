@@ -67,6 +67,7 @@ if streamlit.button("Get Fruit Load List add your fav"):
   try:
     add_my_fruit = streamlit.text_input('What fruit would you like to add?')
     streamlit.write("--- adding " + add_my_fruit)
+    time.sleep(5)
     if not add_my_fruit:
       streamlit.error("select a fruit to add")
       streamlit.write("sleeping from not add")
