@@ -68,6 +68,7 @@ if streamlit.button("Get Fruit Load List add your fav"):
       streamlit.error("select a fruit to add")
     else:
       insert_row_snowflake(add_my_fruit)
+      
 
   
   
