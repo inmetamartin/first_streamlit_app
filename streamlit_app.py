@@ -63,7 +63,7 @@ if streamlit.button("Get Fruit Load List add your fav"):
   #streamlit.header('Additional fruits')
   try:
     add_my_fruit = streamlit.text_input('What fruit would you like to add?')
-    stramlit.write("--- adding " + add_my_fruit)
+    streamlit.write("--- adding " + add_my_fruit)
     if not add_my_fruit:
       streamlit.error("select a fruit to add")
     else:
