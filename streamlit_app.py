@@ -78,7 +78,7 @@ if streamlit.button("Get Fruit Load List add your fav"):
 if streamlit.button("Add favorites"):
   add_my_fruit = streamlit.text_input('What fruit would you like to add?','answer')
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  if "answer" not in add_my_fruit:
+  if "kiwi" in add_my_fruit:
     insert_row_snowflake(add_my_fruit)
   my_cnx.close()
     
