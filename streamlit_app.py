@@ -52,6 +52,7 @@ def get_fruit_load_list():
     return my_cur.fetchall()
 
 def insert_row_snowflake(new_fruit):
+  streamlit.write("in inserst_row_snowflake ")
   try:
     with my_cnx.cursor() as my_cur:
       my_cur.execute("insert into fruit_load_list(:new_fruit)")
