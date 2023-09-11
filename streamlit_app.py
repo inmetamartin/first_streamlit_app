@@ -56,7 +56,7 @@ def insert_row_snowflake(new_fruit):
   try:
     with my_cnx.cursor() as my_cur:
       #sqlIns = 
-      my_cur.execute("insert into fruit_load_list values('test')")
+      my_cur.execute("insert into fruit_load_list values(" + new_fruit + ")")
       return "Thanks for adding "+ new_fruit
   except:
     streamlit.write("error in insert ")
