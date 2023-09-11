@@ -69,7 +69,7 @@ try:
     streamlit.error("select a fruit to add")
   else:
     insert_row_snowflake(add_my_fruit)
-except error e:
+except error as e:
   streamlit.error()
   
   
