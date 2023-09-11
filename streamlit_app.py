@@ -59,6 +59,7 @@ def insert_row_snowflake(new_fruit):
 if streamlit.button("Get Fruit Load List add your fav"):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_data_rows = get_fruit_load_list()
+  my_cnx.close()
   streamlit.dataframe(my_data_rows)
   #my_cur = my_cnx.cursor()
   #streamlit.header('Additional fruits')
@@ -67,8 +68,6 @@ if streamlit.button("Get Fruit Load List add your fav"):
     streamlit.write("--- adding " + add_my_fruit)
     if not add_my_fruit:
       streamlit.error("select a fruit to add")
-      streamlit.write("sleeping from not add")
-      time.sleep(3)
     else:
       streamlit.write("################ ready for snowflake insert ####################")
       streamlist.write("sleeping")
@@ -77,8 +76,10 @@ if streamlit.button("Get Fruit Load List add your fav"):
     streamlit.error()
 
 if streamlit.button("Add favorites"):
-   add_my_fruit = streamlit.text_input('What fruit would you like to add?')
-   insert_row_snowflake(add_my_fruit)
+  add_my_fruit = streamlit.text_input('What fruit would you like to add?','answer')
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  insert_row_snowflake(add_my_fruit)
+  my_cnx.close()
     
     
 
