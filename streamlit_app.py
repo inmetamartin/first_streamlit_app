@@ -52,10 +52,12 @@ def get_fruit_load_list():
     return my_cur.fetchall()
 
 def insert_row_snowflake(new_fruit):
-  with my_cnx.cursor() as my_cur:
-    my_cur.execute("insert into fruit_load_list(new_fruit)")
-    return "Thanks for adding "+ new_fruit
-
+  try:
+    with my_cnx.cursor() as my_cur:
+      my_cur.execute("insert into fruit_load_list(:new_fruit)")
+      return "Thanks for adding "+ new_fruit
+  except:
+    print("error occurd")
 if streamlit.button("Get Fruit Load List add your fav"):
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
   my_data_rows = get_fruit_load_list()
