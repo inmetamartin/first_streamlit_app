@@ -81,9 +81,9 @@ if streamlit.button("Get Fruit Load List add your fav"):
     streamlit.error()
 
 
-add_my_fruit = streamlit.text_input('What fruit would you like to add?','answer')
+add_my_fruit = streamlit.text_input('What fruit would you like to add?','')
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-if "kiwi" in add_my_fruit:
+if len(add_my_fruit) > 3:
   insert_row_snowflake(add_my_fruit)
 my_cnx.close()
     
