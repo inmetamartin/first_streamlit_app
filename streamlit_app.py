@@ -3,6 +3,7 @@ import pandas
 import snowflake.connector
 import requests
 from urllib.error import URLError
+import time
 
 streamlit.title('My parents New Healthy Diner')
 
@@ -52,6 +53,7 @@ def get_fruit_load_list():
 
 def insert_row_snowflake(new_fruit):
   streamlit.write("################ ready for snowflake insert ####################")
+  time.sleep(3)
   with my_cnx.cursor() as my_cur:
     my_cur.execute("insert into fruit_load_list('" + new_fruit +"')")
     return "Thanks for adding "+ new_fruit
@@ -72,5 +74,6 @@ if streamlit.button("Get Fruit Load List add your fav"):
       insert_row_snowflake(add_my_fruit)
   except URLError as e:
     streamlit.error()
+
       
 
