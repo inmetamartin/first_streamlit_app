@@ -52,8 +52,6 @@ def get_fruit_load_list():
     return my_cur.fetchall()
 
 def insert_row_snowflake(new_fruit):
-  if "answer" in new_fruit:
-    return "no insert"
   with my_cnx.cursor() as my_cur:
     my_cur.execute("insert into fruit_load_list('" + new_fruit +"')")
     return "Thanks for adding "+ new_fruit
@@ -80,7 +78,8 @@ if streamlit.button("Get Fruit Load List add your fav"):
 if streamlit.button("Add favorites"):
   add_my_fruit = streamlit.text_input('What fruit would you like to add?','answer')
   my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  insert_row_snowflake(add_my_fruit)
+  if "answer" not in add_my_fruit:
+    insert_row_snowflake(add_my_fruit)
   my_cnx.close()
     
     
